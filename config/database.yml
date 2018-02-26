@@ -7,7 +7,7 @@ development:
   <<: *default
   database: evensteven_development
 
-test:
+test: &test
   <<: *default
   database: evensteven_test
 
@@ -16,3 +16,6 @@ production:
   database: evensteven_production
   username: evensteven
   password: <%= ENV['EVENSTEVEN_DATABASE_PASSWORD'] %>
+
+cucumber:
+  <<: *test
