@@ -17,7 +17,8 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -29,4 +30,3 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
 end
-
