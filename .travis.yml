@@ -2,14 +2,6 @@ language: ruby
 cache: bundler
 rvm:
   - 2.4.1
-script:
-  - bundle install
-  - bundle exec rake db:create --all
-  - bundle exec rake db:migrate
-  - bundle exec rake db:test:prepare
-  - bundle exec rake
-services:
-  - postgresql
 addons:
   chrome: stable
 install:
@@ -19,3 +11,9 @@ install:
   - sudo mv -f ~/chromedriver /usr/local/share/
   - sudo chmod +x /usr/local/share/chromedriver
   - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+before_script:
+  - bundle exec rails db:create db:test:prepare
+  - bundle exec rake
+script:
+services:
+  - postgresql
