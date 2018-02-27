@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Evensteven</title>
-  <%= csrf_meta_tags %>
+  <head>
+    <title>Evensteven</title>
+    <%= csrf_meta_tags %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-<body>
-<% flash.each do |key, value| %>
-  <div class="text-center">
-    <%= value %>
-  </div>
-<% end %>
-<%= yield %>
-</body>
+  <body>
+    <%= render 'layouts/nav' %>
+
+    <% flash.each do |key, value| %>
+      <div class="text-center">
+        <%= value %>
+      </div>
+    <% end %>
+
+  <%= yield %>
+
+  </body>
 </html>
