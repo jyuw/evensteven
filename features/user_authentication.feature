@@ -15,5 +15,6 @@ Feature: User is authenticated for both sign up and login.
       And I fill in "Email" with "hacker@holger.com"
       And I fill in "Password" with "password12"
       And I fill in "Password confirmation" with "password12"
-      And I click "Create"
+      And I click on "Sign up"
       Then I should see the message "Welcome! You have signed up successfully."
+      Then show me the page

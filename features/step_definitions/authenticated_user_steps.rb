@@ -1,24 +1,25 @@
 Given("the following user exists") do |table|
-  # table is a Cucumber::MultilineArgument::DataTable
-  pending # Write code here that turns the phrase above into concrete actions
+  table.hashes.each do |user|
+    FactoryBot.create(:user, user)
+  end
 end
 
 Given("I am on the {string} page") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+  visit root_path
 end
 
-When("I click on {string}") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+When("I click on {string}") do |link_name|
+  click_link_or_button link_name
 end
 
-When("I fill in {string} with {string}") do |string, string2|
-  pending # Write code here that turns the phrase above into concrete actions
+When("I fill in {string} with {string}") do |field, value|
+  fill_in(field, with: value)
 end
 
-When("I click {string}") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Then("I should see the message {string}") do |message|
+  expect(page).to have_content message
 end
 
-Then("I should see the message {string}") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Then("show me the page") do
+  save_and_open_page
 end
