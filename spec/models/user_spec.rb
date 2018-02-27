@@ -1,5 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "Factory" do
+    it "should have a valid factory" do
+      expect(FactoryBot.create(:user)).to be_valid
+    end
+  end
+
+  describe 'db table' do
+    it {is_expected.to have_db_column :id}
+    it {is_expected.to have_db_column :email}
+    it {is_expected.to have_db_column :encrypted_password}
+  end
 end
