@@ -17,4 +17,4 @@ Feature: User is authenticated for both sign up and login.
       And I fill in "Password confirmation" with "password12"
       And I click on "Sign up"
       Then I should see the message "Welcome! You have signed up successfully."
-      Then show me the page
+      Then "hacker@holger.com" should be saved in the database

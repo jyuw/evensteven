@@ -20,6 +20,11 @@ Then("I should see the message {string}") do |message|
   expect(page).to have_content message
 end
 
+Then("{string} should be saved in the database") do |email|
+  user = User.find_by(email: email)
+  expect(user.email).to eq email
+end
+
 Then("show me the page") do
   save_and_open_page
 end
