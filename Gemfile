@@ -23,6 +23,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'shoulda-matchers'
+  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
 end
 
 group :development do
