@@ -3,10 +3,9 @@ Feature: User is authenticated for both sign up and login.
   In order to access the site
   We need to be able to sign up or log in
 
-
   Background:
     Given the following user exists
-      |  email    | password    | password_confirmation |
+      | email     | password    | password_confirmation |
       | jf@ca.com | password123 | password123           |
     And I am on the "Landing" page
 
@@ -26,7 +25,6 @@ Feature: User is authenticated for both sign up and login.
     And I click on "Log in"
     Then I should see the message "Signed in successfully."
 
-
   #Sad paths
   Scenario: User fails to enter password confirmation correctly
     Given I click on "Register"
@@ -35,6 +33,7 @@ Feature: User is authenticated for both sign up and login.
     And I fill in "Password confirmation" with "password"
     And I click on "Sign up"
     Then I should see the message "Password confirmation doesn't match"
+    And I should be on the "Sign up" page
 
   Scenario: User fails to enter email field
     Given I click on "Register"
@@ -42,6 +41,7 @@ Feature: User is authenticated for both sign up and login.
     And I fill in "Password confirmation" with "password12"
     And I click on "Sign up"
     Then I should see the message "Email can't be blank"
+    And I should be on the "Sign up" page
 
   Scenario: User logs in from an account that doesn't exist
     Given I click on "Login"
@@ -49,3 +49,4 @@ Feature: User is authenticated for both sign up and login.
     And I fill in "Password" with "password123"
     And I click on "Log in"
     Then I should see the message "Invalid Email or password."
+    And I should be on the "Sign in" page
