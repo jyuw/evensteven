@@ -5,9 +5,9 @@ Feature: User is sent to a dashboard where they can create or join a group.
 
   Background:
     Given the following user exists
-      | email    | password    | password_confirmation |
+      | email     | password    | password_confirmation |
       | jf@ca.com | password123 | password123           |
-    And I am on the Landing page
+    And I am on the "Landing" page
 
   Scenario: User signs up and is sent to dashboard page
     Given I click on "Register"
