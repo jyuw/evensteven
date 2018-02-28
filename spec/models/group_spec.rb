@@ -12,4 +12,6 @@ RSpec.describe Group, type: :model do
     it {is_expected.to have_db_column :name}
     it {is_expected.to have_db_column :description}
   end
+
+  it {is_expected.to have_many :users}
 end
