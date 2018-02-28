@@ -4,9 +4,7 @@ Given("the following user exists") do |table|
   end
 end
 
-Given("I am on the Landing page") do
-  visit root_path
-end
+
 
 When("I click on {string}") do |link_name|
   click_link_or_button link_name
