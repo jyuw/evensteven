@@ -41,7 +41,6 @@ Then("I should see the text {string}") do |text|
   expect(page).to have_content text
 end
 
-
 def page_path(path_name)
  path = if path_name == 'Sign in'
           new_user_session_path
