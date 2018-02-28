@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Group, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Factory" do
+    it "should have a valid factory" do
+      expect(create(:group)).to be_valid
+    end
+  end
+
+  describe 'db table' do
+    it {is_expected.to have_db_column :id}
+    it {is_expected.to have_db_column :name}
+    it {is_expected.to have_db_column :description}
+  end
 end
