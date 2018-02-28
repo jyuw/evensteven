@@ -4,7 +4,7 @@ Given("the following user exists") do |table|
   end
 end
 
-Given("I am on the {string} page") do |string|
+Given("I am on the Landing page") do
   visit root_path
 end
 
@@ -27,4 +27,16 @@ end
 
 Then("show me the page") do
   save_and_open_page
+end
+
+
+Then("I should be on the Sign in page") do
+  expect(page.current_path).to eq new_user_session_path
+end
+Then("I should be on the Sign up page") do
+  expect(page.current_path).to eq user_registration_path
+end
+
+Then("I should see {string} link") do |link_text|
+  expect(page).to have_content link_text
 end
