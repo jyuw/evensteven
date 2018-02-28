@@ -4,8 +4,6 @@ Given("the following user exists") do |table|
   end
 end
 
-
-
 When("I click on {string}") do |link_name|
   click_link_or_button link_name
 end
@@ -26,7 +24,6 @@ end
 Then("show me the page") do
   save_and_open_page
 end
-
 
 Then("I should be on the Sign in page") do
   expect(page.current_path).to eq new_user_session_path

@@ -3,10 +3,9 @@ Feature: User is authenticated for both sign up and login.
   In order to access the site
   We need to be able to sign up or log in
 
-
   Background:
     Given the following user exists
-      |  email    | password    | password_confirmation |
+      | email    | password    | password_confirmation |
       | jf@ca.com | password123 | password123           |
     And I am on the Landing page
 
@@ -25,7 +24,6 @@ Feature: User is authenticated for both sign up and login.
     And I fill in "Password" with "password123"
     And I click on "Log in"
     Then I should see the message "Signed in successfully."
-
 
   #Sad paths
   Scenario: User fails to enter password confirmation correctly
@@ -52,6 +50,3 @@ Feature: User is authenticated for both sign up and login.
     And I click on "Log in"
     Then I should see the message "Invalid Email or password."
     And I should be on the Sign in page
-
-
-

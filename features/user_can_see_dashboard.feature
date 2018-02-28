@@ -5,7 +5,7 @@ Feature: User is sent to a dashboard where they can create or join a group.
 
   Background:
     Given the following user exists
-      |  email    | password    | password_confirmation |
+      | email    | password    | password_confirmation |
       | jf@ca.com | password123 | password123           |
     And I am on the Landing page
 
@@ -18,4 +18,3 @@ Feature: User is sent to a dashboard where they can create or join a group.
     Then I should see the message "Hello, hacker@holger.com"
     And I should see "Create a group" link
     And I should see "Join a group" link
-
