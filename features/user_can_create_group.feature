@@ -14,6 +14,7 @@ Feature: User should be able to create a group.
 
   Scenario: user creates a group
     Given I click on "Create a group"
+    And show me the page
     When I fill in "Name" with "Holgers trip"
     And I fill in "Description" with "Spain"
     And I select "jade@ca.com" from "Friends"
