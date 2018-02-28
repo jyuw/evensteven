@@ -4,11 +4,20 @@
     <title>Evensteven</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= render 'layouts/nav' %>
+
+    <% flash.each do |key, value| %>
+      <div class="text-center">
+        <%= value %>
+      </div>
+    <% end %>
+
     <%= yield %>
+
   </body>
 </html>

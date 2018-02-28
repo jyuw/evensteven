@@ -13,13 +13,14 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'launchy'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'coveralls', require: false
