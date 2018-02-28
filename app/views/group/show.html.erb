@@ -1,0 +1,11 @@
+<h1>
+  <%= @group.name %>
+</h1>
+
+<p>
+  <%= @group.description %>
+</p>
+
+<% @group.users.each do |user| %>
+  <%= user.email %>
+<% end %>
