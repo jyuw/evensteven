@@ -3,8 +3,8 @@ class GroupController < ApplicationController
   end
 
   def create
-    @group = Group.new(group_params)
     binding.pry
+    @group = Group.new(group_params)
     @group.save
 
   end
@@ -15,6 +15,6 @@ class GroupController < ApplicationController
 
   private
   def group_params
-    params.permit(:name, :description, user_id: [])
+    params.permit(:name, :description, :users)
   end
 end
