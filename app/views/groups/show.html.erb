@@ -1,10 +1,6 @@
-<h1>
-  <%= @group.name %>
-</h1>
+<h1><%= @group.name %></h1>
 
-<p>
-  <%= @group.description %>
-</p>
+<p><%= @group.description %></p>
 
 <h3> Members </h3>
 <% @group.users.each do |user| %>
@@ -16,7 +12,6 @@
     <% end %>
   </p>
 <% end %>
-
 
 <%= form_with model: [@group, Expense.new], local: true do |f| %>
   <%= f.label :description %>

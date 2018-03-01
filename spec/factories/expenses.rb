@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :expense do
-    user_id 1
-    group_id 1
+    user
+    group
     description "MyString"
     amount 1
   end
