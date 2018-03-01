@@ -13,5 +13,7 @@ RSpec.describe Group, type: :model do
     it {is_expected.to have_db_column :description}
   end
 
-  it {is_expected.to have_and_belong_to_many :users}
+  describe 'Associations' do
+    it {is_expected.to have_and_belong_to_many :users}
+  end
 end

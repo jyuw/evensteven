@@ -12,7 +12,7 @@ When("I fill in {string} with {string}") do |field, value|
   fill_in(field, with: value)
 end
 
-Then("I should see the message {string}") do |message|
+Then("I should see {string}") do |message|
   expect(page).to have_content message
 end
 
@@ -35,10 +35,6 @@ end
 
 Given("I am on the {string} page") do |path_name|
   visit page_path(path_name)
-end
-
-Then("I should see the text {string}") do |text|
-  expect(page).to have_content text
 end
 
 def page_path(path_name)

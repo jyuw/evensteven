@@ -5,5 +5,5 @@ Feature: User visits the site and is greeted by a landing page
 
 Scenario: User visits site
   Given I am on the "Landing" page
-  Then I should see the text "Even Steven"
-  And I should see the text "The easiest way to split your bills and pay your friends."
+  Then I should see "Even Steven"
+  And I should see "The easiest way to split your bills and pay your friends."

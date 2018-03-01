@@ -15,6 +15,5 @@ Feature: User is sent to a dashboard where they can create or join a group.
     And I fill in "Password" with "password12"
     And I fill in "Password confirmation" with "password12"
     And I click on "Sign up"
-    Then I should see the message "Hello, hacker@holger.com"
+    Then I should see "Hello, hacker@holger.com"
     And I should see "Create a group" link
-    And I should see "Join a group" link

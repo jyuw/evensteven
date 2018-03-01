@@ -18,8 +18,8 @@ class GroupsController < ApplicationController
   end
 
   def add_users_to_group
-    params[:users].each do |u|
-      user = User.find_by(id: u)
+    params[:users].each do |member|
+      user = User.find_by(id: member)
       @group.users << user
     end
   end
