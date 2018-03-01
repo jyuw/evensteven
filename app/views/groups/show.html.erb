@@ -1,0 +1,18 @@
+<h1>
+  <%= @group.name %>
+</h1>
+
+<p>
+  <%= @group.description %>
+</p>
+
+<h3> Members </h3>
+<% @group.users.each do |user| %>
+  <p>
+    <% if user == current_user %>
+      <strong> <%= user.email %> </strong>
+    <% else %>
+      <%= user.email %>
+    <% end %>
+  </p>
+<% end %>

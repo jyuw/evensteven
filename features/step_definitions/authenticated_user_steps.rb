@@ -41,7 +41,6 @@ Then("I should see the text {string}") do |text|
   expect(page).to have_content text
 end
 
-
 def page_path(path_name)
  path = if path_name == 'Sign in'
           new_user_session_path
@@ -49,6 +48,8 @@ def page_path(path_name)
           user_registration_path
         elsif path_name == 'Landing'
           root_path
+        elsif path_name == 'Dashboard'
+          dashboard_path
         else
           raise " #{path_name} does not exist"
         end
