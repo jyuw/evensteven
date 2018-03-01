@@ -20,7 +20,7 @@ Feature: User should be able to create a group.
     And I select "david@ca.com" from "friends"
     And I click on "Create group"
     Then I should be on "Holgers trip" Group page
-    And I should see the text "Holgers trip"
-    And I should see the text "Spain"
-    And I should see the text "jade@ca.com"
-    And I should see the text "faraz@ca.com"
+    And I should see "Holgers trip"
+    And I should see "Spain"
+    And I should see "jade@ca.com"
+    And I should see "faraz@ca.com"

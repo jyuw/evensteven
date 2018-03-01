@@ -15,7 +15,7 @@ Feature: User is authenticated for both sign up and login.
     And I fill in "Password" with "password12"
     And I fill in "Password confirmation" with "password12"
     And I click on "Sign up"
-    Then I should see the message "Welcome! You have signed up successfully."
+    Then I should see "Welcome! You have signed up successfully."
     Then "hacker@holger.com" should be saved in the database
 
   Scenario: User logs in from an existing account
@@ -23,7 +23,7 @@ Feature: User is authenticated for both sign up and login.
     When I fill in "Email" with "jf@ca.com"
     And I fill in "Password" with "password123"
     And I click on "Log in"
-    Then I should see the message "Signed in successfully."
+    Then I should see "Signed in successfully."
 
   #Sad paths
   Scenario: User fails to enter password confirmation correctly
@@ -32,7 +32,7 @@ Feature: User is authenticated for both sign up and login.
     And I fill in "Password" with "password12"
     And I fill in "Password confirmation" with "password"
     And I click on "Sign up"
-    Then I should see the message "Password confirmation doesn't match"
+    Then I should see "Password confirmation doesn't match"
     And I should be on the "Sign up" page
 
   Scenario: User fails to enter email field
@@ -40,7 +40,7 @@ Feature: User is authenticated for both sign up and login.
     And I fill in "Password" with "password12"
     And I fill in "Password confirmation" with "password12"
     And I click on "Sign up"
-    Then I should see the message "Email can't be blank"
+    Then I should see "Email can't be blank"
     And I should be on the "Sign up" page
 
   Scenario: User logs in from an account that doesn't exist
@@ -48,5 +48,5 @@ Feature: User is authenticated for both sign up and login.
     When I fill in "Email" with "david@ca.com"
     And I fill in "Password" with "password123"
     And I click on "Log in"
-    Then I should see the message "Invalid Email or password."
+    Then I should see "Invalid Email or password."
     And I should be on the "Sign in" page
