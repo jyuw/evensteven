@@ -22,5 +22,5 @@
 <% end %>
 
 <% @group.expenses.each do |expense| %>
-  <p> <%= expense.user.email %> -> <%= expense.description %>: <%= expense.amount %>kr</p>
+  <p> <%= expense.user.email %> paid <%= expense.amount %>kr for <%= expense.description %></p>
 <% end %>
