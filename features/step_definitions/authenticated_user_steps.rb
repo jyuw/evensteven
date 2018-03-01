@@ -46,6 +46,9 @@ def page_path(path_name)
           root_path
         elsif path_name == 'Dashboard'
           dashboard_path
+        elsif path_name == 'Holgers trip'
+          group_id = Group.find_by(name: path_name)
+          group_path(group_id)
         else
           raise " #{path_name} does not exist"
         end
