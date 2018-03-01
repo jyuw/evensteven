@@ -17,11 +17,15 @@
   </p>
 <% end %>
 
-<%= form_with model: [@group] url: groups_path do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, id: 'Name' %>
+
+<%= form_with model: [@group, Expense.new], local: true do |f| %>
   <%= f.label :description %>
   <%= f.text_field :description, id: 'Description' %>
-  <%= f.select(:users, User.all.collect {|u| [ u.email, u.id ] }, {}, { multiple: true, id: 'friends' })%>
-  <%= f.submit value: 'Create group' %>
+  <%= f.label :amount %>
+  <%= f.text_field :amount, id: 'Amount' %>
+  <%= f.submit value: 'Add expense' %>
+<% end %>
+
+<% @group.expense.each do |expense| %>
+  <p> <%= expense.user %> -> <%= expense.description %>: <%= expense.amount %>kr</p>
 <% end %>

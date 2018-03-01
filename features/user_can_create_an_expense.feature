@@ -25,4 +25,4 @@ Feature: In order to split bill I want to be able to add an expense
     When I fill in "Description" with "Dinner"
     And I fill in "Amount" with "300"
     And I click on "Add expense"
-    Then I should see the message "faraz@ca.com -> Dinner, 300kr"
+    Then I should see "faraz@ca.com -> Dinner: 300kr"
