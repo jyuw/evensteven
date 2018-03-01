@@ -18,6 +18,16 @@ Capybara.register_driver :selenium do |app|
   )
 end
 
+Before do
+  Warden.test_mode!
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(OmniAuthFixtures.facebook_response)
+end
+
+After do
+  Warden.test_reset!
+end
+
 Capybara.javascript_driver = :selenium
 
 ActionController::Base.allow_rescue = false

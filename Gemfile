@@ -8,7 +8,7 @@ end
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'jbuilder', '~> 2.5'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 4.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.5'
@@ -21,6 +21,7 @@ group :development, :test do
   gem 'coveralls', require: false
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'launchy'
   gem 'pry-byebug'
