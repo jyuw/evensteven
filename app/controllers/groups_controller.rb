@@ -4,6 +4,8 @@ class GroupsController < ApplicationController
     params[:users].shift
     @group = Group.new(group_params)
     add_users_to_group
+    add_current_user_to_group
+    @group.save
   end
 
   def show
@@ -20,8 +22,10 @@ class GroupsController < ApplicationController
       user = User.find_by(id: member)
       @group.users << user
     end
+  end
+
+  def add_current_user_to_group
     @group.users << current_user
-    @group.save
   end
 
 end
