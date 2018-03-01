@@ -24,12 +24,20 @@ Feature: Expenses are split between all members of the group
       | jade@ca.com  | cheese       | 1000    | Holgers trip |
     And I am logged in as "jade@ca.com"
 
+  # Scenario:
+  #   Given I am on the "Holgers trip" page
+  #   Then I should see "faraz@ca.com paid 600kr for Eiffel Tower"
+  #   And I should see "david@ca.com paid 2000kr for motorcycles"
+  #   And I should see "jade@ca.com paid 1000kr for cheese"
+  #   And I should see "faraz@ca.com owes david@ca.com 600"
+  #   And I should see "jade@ca.com owes david@ca.com 200"
+  #   And I should see "Total expenses per person: 1200kr"
+
+
   Scenario:
     Given I am on the "Holgers trip" page
-    Then show me the page
-    Then I should see "faraz@ca.com paid 600kr for Eiffel Tower"
-    And I should see "david@ca.com paid 2000kr for motorcycles"
-    And I should see "jade@ca.com paid 1000kr for cheese"
-    And I should see "faraz@ca.com owes david@ca.com 600"
-    And I should see "jade@ca.com owes david@ca.com 200"
-    And I should see "Total expenses per person: 1200kr"
+    When I fill in "Description" with "wine"
+    And I fill in "Amount" with "300"
+    And I click on "Add expense"
+    And I should see "faraz@ca.com owes david@ca.com 700"
+    And I should see "Total expenses per person: 1300kr"

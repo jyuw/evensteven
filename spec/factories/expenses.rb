@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :expense do
     user
     group
-    description "MyString"
-    amount 1
+    description "Travels"
+    amount 10
   end
 end
