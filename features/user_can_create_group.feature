@@ -1,7 +1,7 @@
 Feature: User should be able to create a group.
   As a user
   In order to start using the application
-  I would like to be able to create a group
+  I would like to be able to create a group with members
 
   Background:
     Given the following user exists
@@ -11,7 +11,6 @@ Feature: User should be able to create a group.
       | david@ca.com |
     And I am logged in as "faraz@ca.com"
     And I am on the "Dashboard" page
-
 
   Scenario: user creates a group
     Given I click on "Create a group"
@@ -24,3 +23,4 @@ Feature: User should be able to create a group.
     And I should see the text "Holgers trip"
     And I should see the text "Spain"
     And I should see the text "jade@ca.com"
+    And I should see the text "faraz@ca.com"
