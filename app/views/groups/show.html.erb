@@ -16,3 +16,12 @@
     <% end %>
   </p>
 <% end %>
+
+<%= form_with model: [@group] url: groups_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, id: 'Name' %>
+  <%= f.label :description %>
+  <%= f.text_field :description, id: 'Description' %>
+  <%= f.select(:users, User.all.collect {|u| [ u.email, u.id ] }, {}, { multiple: true, id: 'friends' })%>
+  <%= f.submit value: 'Create group' %>
+<% end %>
