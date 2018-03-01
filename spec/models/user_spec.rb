@@ -16,5 +16,6 @@ RSpec.describe User, type: :model do
   
   describe 'Associations' do
     it {is_expected.to have_and_belong_to_many :groups}
+    it {is_expected.to have_many :expenses}
   end
 end

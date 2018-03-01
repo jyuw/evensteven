@@ -1,10 +1,6 @@
-<h1>
-  <%= @group.name %>
-</h1>
+<h1><%= @group.name %></h1>
 
-<p>
-  <%= @group.description %>
-</p>
+<p><%= @group.description %></p>
 
 <h3> Members </h3>
 <% @group.users.each do |user| %>
@@ -15,4 +11,16 @@
       <%= user.email %>
     <% end %>
   </p>
+<% end %>
+
+<%= form_with model: [@group, Expense.new], local: true do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description, id: 'Description' %>
+  <%= f.label :amount %>
+  <%= f.text_field :amount, id: 'Amount' %>
+  <%= f.submit value: 'Add expense' %>
+<% end %>
+
+<% @group.expenses.each do |expense| %>
+  <p> <%= expense.user.email %> -> <%= expense.description %>: <%= expense.amount %>kr</p>
 <% end %>
