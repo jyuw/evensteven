@@ -1,12 +1,11 @@
 class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params.merge(group_id: params[:group_id]))
-    binding.pry
-
     add_current_user_to_expense
     group = Group.find(params[:group_id])
     all_group_expenses = extract_user_expenses(group)
-    calculate_amounts(all_group_expenses)
+    total_amounts_owed = calculate_amounts(all_group_expenses)
+    separates_debtors_and_lenders(total_amounts_owed)
     redirect_to group_path(group)
   end
 
@@ -22,8 +21,8 @@ class ExpensesController < ApplicationController
   end
 
   def calculate_amounts(group)
-    group_average = group.values.reduce(:+).fdiv(group.size)
-    group.map { |k,v| [k, (v - group_average).round(2)] }.to_h
+    @group_average = group.values.reduce(:+).fdiv(group.size)
+    group.map { |k,v| [k, (v - @group_average).round(2)] }.to_h
   end
 
   def extract_user_expenses(group)

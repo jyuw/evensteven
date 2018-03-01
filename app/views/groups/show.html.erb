@@ -24,3 +24,46 @@
 <% @group.expenses.each do |expense| %>
   <p> <%= expense.user.email %> paid <%= expense.amount %>kr for <%= expense.description %></p>
 <% end %>
+
+<h3> WHO OWES WHO!?!!?!</h3>
+
+<% @total_amounts_owed.each do |id, amount| %>
+  <p>
+    <% lenders = {} %>
+    <% debtors = {} %>
+    <% if amount == 0 %>
+      <% user = User.find_by(id: id) %>
+      <%= user.email %> is scott free!
+    <% elsif amount > @group_average %>
+      <% lenders[id] = amount %>
+    <% else %>
+      <% debtors[id] = amount %>
+    <% end %>
+
+    <% lenders.each do |key, value| %>
+
+
+    <% end %>
+
+<% end %>
+
+
+  </p>
+
+
+    lenders= {david}
+      debtor = {faraz}
+    <% if amount == 0 %>
+      <%  %>
+      <%
+      compare lender[0] with debtor[0]
+      while lender[0]!=0 || debtor[0]!=0
+        david -1
+        faraz +1
+
+
+{david 244 => 700.0, faraz 243 => -700.0, jade 242 => 0.0}
+
+total = 1300
+
+=> {david 244=>2000, faraz 243=>600, jade 242=>1300}
