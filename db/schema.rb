@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20180228210716) do
   create_table "groups_users", id: false, force: :cascade do |t|
     t.bigint "group_id", null: false
     t.bigint "user_id", null: false
+    t.index ["group_id", "user_id"], name: "index_groups_users_on_group_id_and_user_id"
+    t.index ["user_id", "group_id"], name: "index_groups_users_on_user_id_and_group_id"
   end
 
   create_table "users", force: :cascade do |t|
