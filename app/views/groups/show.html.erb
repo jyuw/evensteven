@@ -26,6 +26,6 @@
   <%= f.submit value: 'Add expense' %>
 <% end %>
 
-<% @group.expense.each do |expense| %>
+<% @group.expenses.each do |expense| %>
   <p> <%= expense.user %> -> <%= expense.description %>: <%= expense.amount %>kr</p>
 <% end %>
