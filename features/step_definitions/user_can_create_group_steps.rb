@@ -11,4 +11,3 @@ Then("I should be on {string} Group page") do |group_name|
   group = Group.find_by(name: group_name)
   visit group_path(group.id)
 end
-

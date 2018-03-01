@@ -37,6 +37,19 @@ Given("I am on the {string} page") do |path_name|
   visit page_path(path_name)
 end
 
+Given("I visit the site") do
+  visit root_path
+end
+
+Then("I should be redirected to the landing page") do
+  expect(page.current_path).to eq root_path
+end
+
+Then("my account should state that I signed up with Facebook") do
+  user = User.last
+  expect(user.provider).to eq 'facebook'
+end
+
 def page_path(path_name)
  path = if path_name == 'Sign in'
           new_user_session_path
