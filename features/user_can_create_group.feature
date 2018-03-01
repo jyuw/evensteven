@@ -24,4 +24,3 @@ Feature: User should be able to create a group.
     And I should see the text "Spain"
     And I should see the text "jade@ca.com"
     And I should see the text "faraz@ca.com"
-    And show me the page
