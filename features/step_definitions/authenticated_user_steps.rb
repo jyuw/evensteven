@@ -4,11 +4,6 @@ Given("the following user exists") do |table|
   end
 end
 
-Given("I don't have an account with {string} connected to facebook") do |email|
-  user = User.find_by(email: email)
-  expect(user).to eq nil
-end
-
 When("I click on {string}") do |link_name|
   click_link_or_button link_name
 end
