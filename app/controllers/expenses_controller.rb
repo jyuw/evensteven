@@ -8,7 +8,6 @@ class ExpensesController < ApplicationController
     split(all_group_expenses, total_amounts_owed)
     redirect_to group_path(group)
   end
-
   private
 
   def expense_params
@@ -22,7 +21,7 @@ class ExpensesController < ApplicationController
 
   def calculate_amounts(group)
     @group_average = group.values.reduce(:+).fdiv(group.size)
-    group.map { |k,v| [k, (v - @group_average).round(2)] }.to_h
+    group.map {|k, v| [k, (v - @group_average).round(2)]}.to_h
   end
 
   def extract_user_expenses(group)
@@ -41,38 +40,51 @@ class ExpensesController < ApplicationController
     total_expenses
   end
 
+
   def split(all_group_expenses, total_amounts_owed)
     lenders = []
     debtors = []
     all_group_expenses.each do |person, amount|
-      binding.pry
       user = User.find_by(id: person).email
       if amount == 0
         return true
       elsif amount > @group_average
-        lenders << {user => amount}
+        lenders << {user => (total_amounts_owed.values_at(person))[0]}
       else
-        debtors << {user => amount}
+        debtors << {user => (total_amounts_owed.values_at(person))[0]}
       end
     end
 
+
     @output = []
 
-    lenders.each do |lender_hash|
-      while lender_hash.values != 0
+    until lender_hash.values == 0.0
+      lenders.each do |lender_hash|
         debtors.each do |debtor_hash|
-          if lender_hash.values >= debtor_hash.values.abs
-            lender_hash.values -= debtor_hash.values.abs
-            output << "#{debtor.hash.key} owes #{lender.hash.key} #{debtor.hash.values}kr"
-          elsif debtor_hash.values.abs >= lender_hash.values
-            debtor_hash.values += lender_hash.values
-            output << "#{debtor.hash.key} owes #{lender.hash.key} #{lender.hash.values}kr"
+          binding.pry
+          if lender_hash.values[0] >= debtor_hash.values[0].abs
+            lender_hash.keys[0] = lender_hash.values[0] - debtor_hash.values[0]
+            debtor_hash.keys[0] = debtor_hash.values[0] + lender_hash.values[0]
+            @output << "#{debtor_hash.keys[0]} owes #{lender_hash.keys[0]} #{debtor_hash.values[0]}kr"
+          elsif debtor_hash.values[0].abs >= lender_hash.values[0]
+            debtor_hash.keys[0] =  debtor_hash.values[0] + lender_hash.values[0]
+            lender_hash.keys[0] = lender_hash.values[0] + debtor_hash.values[0]
+            @output << "#{debtor_hash.keys[0]} owes #{lender_hash.keys[0]} #{lender_hash.values[0]}kr"
           else
             return true
           end
         end
       end
     end
-    return @output
+    @output
   end
-end
+ end
+
+
+
+
+
+
+
+
+
