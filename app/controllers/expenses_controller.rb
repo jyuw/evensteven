@@ -8,6 +8,7 @@ class ExpensesController < ApplicationController
     split(all_group_expenses, total_amounts_owed)
     redirect_to group_path(group)
   end
+
   private
 
   def expense_params
@@ -78,16 +79,6 @@ class ExpensesController < ApplicationController
         counter += 1
       end
     end
-    binding.pry
     @output
   end
  end
-
-
-
-
-
-
-
-
-

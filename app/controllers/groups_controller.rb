@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
     params[:users].shift
     @group = Group.new(group_params)
     add_users_to_group
+    redirect_to group_path(@group) 
   end
 
   def show
