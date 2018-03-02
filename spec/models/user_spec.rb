@@ -13,7 +13,12 @@ RSpec.describe User, type: :model do
     it {is_expected.to have_db_column :email}
     it {is_expected.to have_db_column :encrypted_password}
   end
-  
+
+  describe 'db table with added fb-login' do
+    it {is_expected.to have_db_column :uid}
+    it {is_expected.to have_db_column :provider}
+  end
+
   describe 'Associations' do
     it {is_expected.to have_and_belong_to_many :groups}
     it {is_expected.to have_many :expenses}
