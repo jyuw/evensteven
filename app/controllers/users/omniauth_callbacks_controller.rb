@@ -11,6 +11,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    redirect_to root_path, notice: 'Could not login'
+    redirect_to root_path
   end
 end
