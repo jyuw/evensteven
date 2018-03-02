@@ -41,14 +41,6 @@ Given("I have incorrect credetialls") do
   OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
 end
 
-Given("I visit the site") do
-  visit root_path
-end
-
-Then("I should be redirected to the landing page") do
-  expect(page.current_path).to eq root_path
-end
-
 Then("my account should state that I signed up with Facebook") do
   user = User.last
   expect(user.provider).to eq 'facebook'
