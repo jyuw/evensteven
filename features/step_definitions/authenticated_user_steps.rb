@@ -37,6 +37,10 @@ Given("I am on the {string} page") do |path_name|
   visit page_path(path_name)
 end
 
+Given("I have incorrect credetialls") do
+  OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
+end
+
 Given("I visit the site") do
   visit root_path
 end
