@@ -25,6 +25,11 @@
   <p> <%= expense.user.email %> paid <%= expense.amount %>kr for <%= expense.description %></p>
 <% end %>
 
-<h3> Who owes whom? </h3>
-<% binding.pry %>
-<%= @output %>
+<% if @output %>
+  <h3> Who owes whom? </h3>
+  <% @output.each do |message| %>
+    <%= message %>
+  <% end %>
+  <p>
+    Total expenses per person: <%= @group_average %>kr   </p>
+<% end %>

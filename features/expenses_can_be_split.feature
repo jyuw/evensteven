@@ -33,7 +33,7 @@ Feature: Expenses are split between all members of the group
     And I should see "jade@ca.com paid 1000kr for cheese"
     And I should see "faraz@ca.com owes david@ca.com 600"
     And I should see "jade@ca.com owes david@ca.com 200"
-    And I should see "Total expenses per person: 1200kr"
+    And I should see "Total expenses per person: 1200.0kr"
 
 
   Scenario:
@@ -42,4 +42,4 @@ Feature: Expenses are split between all members of the group
     And I fill in "Amount" with "300"
     And I click on "Add expense"
     And I should see "faraz@ca.com owes david@ca.com 700"
-    And I should see "Total expenses per person: 1300kr"
+    And I should see "Total expenses per person: 1300.0kr"

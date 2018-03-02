@@ -2,11 +2,11 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params.merge(group_id: params[:group_id]))
     add_current_user_to_expense
-    group = Group.find(params[:group_id])
-    all_group_expenses = extract_user_expenses(group)
+    @group = Group.find(params[:group_id])
+    all_group_expenses = extract_user_expenses(@group)
     total_amounts_owed = calculate_amounts(all_group_expenses)
-    split(all_group_expenses, total_amounts_owed)
-    redirect_to group_path(group)
+    @output = split(all_group_expenses, total_amounts_owed)
+    render 'groups/show'
   end
 
   private
@@ -28,57 +28,49 @@ class ExpensesController < ApplicationController
   def extract_user_expenses(group)
     total_expenses = {}
     group.expenses.each do |expense|
-      key = expense.user.id
-      value = expense.amount
+      key = expense.user.email
       if total_expenses.has_key?(key)
-        current_amount = total_expenses.fetch(key)
-        current_amount += value
-        total_expenses[key] = current_amount
+        total_expenses[key] += expense.amount
       else
-        total_expenses[key] = value
+        total_expenses[key] = expense.amount
       end
     end
     total_expenses
   end
 
-
   def split(all_group_expenses, total_amounts_owed)
-    @lenders = []
-    @debtors = []
-    @output = []
-    all_group_expenses.each do |person, amount|
-      user = User.find_by(id: person).email
-      if total_amounts_owed.values_at(person)[0] == 0
-       true
-      elsif amount > @group_average
-        @lenders << {user => (total_amounts_owed.values_at(person))[0]}
+    lenders = []
+    debtors = []
+    output = []
+
+    all_group_expenses.each do |email, amount|
+      next if total_amounts_owed[email] == 0
+      if amount > @group_average
+        lenders << { email => total_amounts_owed[email] }
       else
-        @debtors << {user => (total_amounts_owed.values_at(person))[0]}
+        debtors << { email => total_amounts_owed[email] }
       end
     end
 
-    @lenders.each do |lender_hash|
+    lenders.each do |lender|
       counter = 0
-      until counter >= @lenders.length
-        @debtors.each do |debtor_hash|
+      until counter >= lenders.length
+        debtors.each do |debtor|
+          if (lender.values[0] >= debtor.values[0].abs) && lender.values[0]!=0
+            lender[lender.keys[0]] = (lender.values[0] - debtor.values[0])
+            output << "#{debtor.keys[0]} owes #{lender.keys[0]} #{-(debtor.values[0])}kr"
+            debtor[debtor.keys[0]] = (debtor.values[0] - debtor.values[0])
 
-          if lender_hash.values[0] >= debtor_hash.values[0].abs
-            lender_hash[lender_hash.keys[0]] = (lender_hash.values[0] - debtor_hash.values[0])
-            debtor_hash[debtor_hash.keys[0]] = (debtor_hash.values[0] + lender_hash.values[0])
-            @output << "#{debtor_hash.keys[0]} owes #{lender_hash.keys[0]} #{debtor_hash.values[0]}kr"
-
-          elsif debtor_hash.values[0].abs >= lender_hash.values[0]
-
-            debtor_hash[debtor_hash.keys[0]] =  (debtor_hash.values[0] + lender_hash.values[0])
-            lender_hash[lender_hash.keys[0]] = (lender_hash.values[0] + debtor_hash.values[0])
-            @output << "#{debtor_hash.keys[0]} owes #{lender_hash.keys[0]} #{lender_hash.values[0]}kr"
+          elsif (debtor.values[0].abs >= lender.values[0]) && debtor.values[0]!=0
+            debtor[debtor.keys[0]] =  (debtor.values[0] + lender.values[0])
+            output << "#{debtor.keys[0]} owes #{lender.keys[0]} #{lender.values[0]}kr"
+            lender[lender.keys[0]] = (lender.values[0] - lender.values[0])
           else
-
           end
         end
         counter += 1
       end
     end
-    @output
+    output
   end
- end
+end
