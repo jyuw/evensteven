@@ -42,40 +42,43 @@ class ExpensesController < ApplicationController
 
 
   def split(all_group_expenses, total_amounts_owed)
-    lenders = []
-    debtors = []
+    @lenders = []
+    @debtors = []
+    @output = []
     all_group_expenses.each do |person, amount|
       user = User.find_by(id: person).email
-      if amount == 0
-        return true
+      if total_amounts_owed.values_at(person)[0] == 0
+       true
       elsif amount > @group_average
-        lenders << {user => (total_amounts_owed.values_at(person))[0]}
+        @lenders << {user => (total_amounts_owed.values_at(person))[0]}
       else
-        debtors << {user => (total_amounts_owed.values_at(person))[0]}
+        @debtors << {user => (total_amounts_owed.values_at(person))[0]}
       end
     end
 
+    @lenders.each do |lender_hash|
+      counter = 0
+      until counter >= @lenders.length
+        @debtors.each do |debtor_hash|
 
-    @output = []
-
-    until lender_hash.values == 0.0
-      lenders.each do |lender_hash|
-        debtors.each do |debtor_hash|
-          binding.pry
           if lender_hash.values[0] >= debtor_hash.values[0].abs
-            lender_hash.keys[0] = lender_hash.values[0] - debtor_hash.values[0]
-            debtor_hash.keys[0] = debtor_hash.values[0] + lender_hash.values[0]
+            lender_hash[lender_hash.keys[0]] = (lender_hash.values[0] - debtor_hash.values[0])
+            debtor_hash[debtor_hash.keys[0]] = (debtor_hash.values[0] + lender_hash.values[0])
             @output << "#{debtor_hash.keys[0]} owes #{lender_hash.keys[0]} #{debtor_hash.values[0]}kr"
+
           elsif debtor_hash.values[0].abs >= lender_hash.values[0]
-            debtor_hash.keys[0] =  debtor_hash.values[0] + lender_hash.values[0]
-            lender_hash.keys[0] = lender_hash.values[0] + debtor_hash.values[0]
+
+            debtor_hash[debtor_hash.keys[0]] =  (debtor_hash.values[0] + lender_hash.values[0])
+            lender_hash[lender_hash.keys[0]] = (lender_hash.values[0] + debtor_hash.values[0])
             @output << "#{debtor_hash.keys[0]} owes #{lender_hash.keys[0]} #{lender_hash.values[0]}kr"
           else
-            return true
+
           end
         end
+        counter += 1
       end
     end
+    binding.pry
     @output
   end
  end

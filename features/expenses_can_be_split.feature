@@ -5,23 +5,25 @@ Feature: Expenses are split between all members of the group
 
   Background:
     Given the following user exists
-      | email        |
-      | jade@ca.com  |
-      | faraz@ca.com |
-      | david@ca.com |
+      | email         |
+      | jade@ca.com   |
+      | faraz@ca.com  |
+      | david@ca.com  |
+      | thomas@ca.com |
+      | magnus@ca.com |
     And the following group exists
-      | name         | description  |
-      | Holgers trip | Paris        |
+      | name         | description |
+      | Holgers trip | Paris       |
     And the users are members of the following group
       | email        | group        |
       | jade@ca.com  | Holgers trip |
       | faraz@ca.com | Holgers trip |
       | david@ca.com | Holgers trip |
     And the following expenses have been added
-      | email        | description  | amount  | group        |
-      | david@ca.com | motorcycles  | 2000    | Holgers trip |
-      | faraz@ca.com | Eiffel Tower | 600     | Holgers trip |
-      | jade@ca.com  | cheese       | 1000    | Holgers trip |
+      | email        | description  | amount | group        |
+      | david@ca.com | motorcycles  | 2000   | Holgers trip |
+      | faraz@ca.com | Eiffel Tower | 600    | Holgers trip |
+      | jade@ca.com  | cheese      | 1000   | Holgers trip |
     And I am logged in as "jade@ca.com"
 
   Scenario:
