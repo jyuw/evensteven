@@ -13,5 +13,4 @@ Feature: Visitor should be able to sign up / login with Facebook.
     Given I visit the site
     And I have incorrect credetialls
     And I click on "Sign in with Facebook"
-    And show me the page
     Then I should see "Well that didn't work.."
