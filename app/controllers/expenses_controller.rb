@@ -5,7 +5,7 @@ class ExpensesController < ApplicationController
     group = Group.find(params[:group_id])
     all_group_expenses = extract_user_expenses(group)
     total_amounts_owed = calculate_amounts(all_group_expenses)
-    separates_debtors_and_lenders(total_amounts_owed)
+    split(all_group_expenses, total_amounts_owed)
     redirect_to group_path(group)
   end
 
@@ -39,5 +39,40 @@ class ExpensesController < ApplicationController
       end
     end
     total_expenses
+  end
+
+  def split(all_group_expenses, total_amounts_owed)
+    lenders = []
+    debtors = []
+    all_group_expenses.each do |person, amount|
+      binding.pry
+      user = User.find_by(id: person).email
+      if amount == 0
+        return true
+      elsif amount > @group_average
+        lenders << {user => amount}
+      else
+        debtors << {user => amount}
+      end
+    end
+
+    @output = []
+
+    lenders.each do |lender_hash|
+      while lender_hash.values != 0
+        debtors.each do |debtor_hash|
+          if lender_hash.values >= debtor_hash.values.abs
+            lender_hash.values -= debtor_hash.values.abs
+            output << "#{debtor.hash.key} owes #{lender.hash.key} #{debtor.hash.values}kr"
+          elsif debtor_hash.values.abs >= lender_hash.values
+            debtor_hash.values += lender_hash.values
+            output << "#{debtor.hash.key} owes #{lender.hash.key} #{lender.hash.values}kr"
+          else
+            return true
+          end
+        end
+      end
+    end
+    return @output
   end
 end
