@@ -11,6 +11,6 @@ Feature: Visitor should be able to sign up / login with Facebook.
 
   Scenario: Visitor fails to sign up with Facebook OmniAuth
     Given I am on the "Landing" page
-    And I have incorrect credetialls
+    And I have incorrect credentials
     And I click on "Sign in with Facebook"
     Then I should see "Well that didn't work.."
