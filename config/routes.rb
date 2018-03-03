@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root controller: :welcome, action: :index
 
   authenticate :user do
-    get 'dashboard', to: 'welcome#dashboard'
+    get :dashboard, controller: :welcome, action: :dashboard
     resources :groups, only: [:new, :create, :show] do
       resources :expenses, only: [:create]
     end
