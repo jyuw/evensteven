@@ -17,7 +17,7 @@ Given("the following expenses have been added") do |table|
   table.hashes.each do |group|
     current_group = Group.find_by(name: group[:group])
     user = User.find_by(email: group[:email])
-    expense = Expense.create(description: group[:description], amount: group[:amount])
+    expense = create(:expense, description: group[:description], amount: group[:amount])
     user.expenses.push expense
     current_group.expenses.push expense
     current_group.save

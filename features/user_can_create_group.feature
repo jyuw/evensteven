@@ -12,7 +12,7 @@ Feature: User should be able to create a group.
     And I am logged in as "faraz@ca.com"
     And I am on the "Dashboard" page
 
-  Scenario: user creates a group
+  Scenario: User creates a group
     Given I click on "Create a group"
     When I fill in "Name" with "Holgers trip"
     And I fill in "Description" with "Spain"

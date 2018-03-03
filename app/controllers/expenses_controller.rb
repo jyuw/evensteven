@@ -51,26 +51,26 @@ class ExpensesController < ApplicationController
     end
 
     lenders.each do |lender|
-      # counter = 0
-      # until counter >= lenders.length
       if lender.values.first != 0
         debtors.each do |debtor|
-          next if lender.values.first == 0 || debtor.values.first == 0
+          debtor_owes = debtor.values.first
+          debtor_email = debtor.keys.first
+          lender_owed = lender.values.first
+          lender_email = lender.keys.first
+          
+          next if lender_owed == 0 || debtor_owes == 0
 
-          if (lender.values.first >= debtor.values.first.abs)
-            lender[lender.keys.first] = (lender.values.first + debtor.values.first)
-            output << "#{debtor.keys.first} owes #{lender.keys.first} #{-(debtor.values.first)}kr"
-            debtor[debtor.keys.first] = (debtor.values.first - debtor.values.first)
+          if (lender_owed >= debtor_owes.abs)
+            lender[lender_email] = (lender_owed + debtor_owes)
+            output << "#{debtor_email} owes #{lender_email} #{-(debtor_owes)}kr"
+            debtor[debtor_email] = (debtor_owes - debtor_owes)
 
-          elsif (debtor.values.first.abs >= lender.values.first)
-            debtor[debtor.keys.first] =  (debtor.values.first + lender.values.first)
-            output << "#{debtor.keys.first} owes #{lender.keys.first} #{lender.values.first}kr"
-            lender[lender.keys.first] = (lender.values.first - lender.values.first)
           else
-            puts "JAjjdäää.. is stone-cold.. OMG"
+            debtor[debtor_email] =  (debtor_owes + lender_owed)
+            output << "#{debtor_email} owes #{lender_email} #{lender_owed}kr"
+            lender[lender_email] = (lender_owed - lender_owed)
           end
         end
-        # counter += 1
       end
     end
     output

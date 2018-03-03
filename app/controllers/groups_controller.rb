@@ -24,5 +24,4 @@ class GroupsController < ApplicationController
     @group.users << current_user
     @group.save
   end
-
 end
