@@ -57,7 +57,7 @@ class ExpensesController < ApplicationController
           debtor_email = debtor.keys.first
           lender_owed = lender.values.first
           lender_email = lender.keys.first
-          
+
           next if lender_owed == 0 || debtor_owes == 0
 
           if (lender_owed >= debtor_owes.abs)

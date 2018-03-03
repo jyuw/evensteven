@@ -1,7 +1,7 @@
 Feature: In order to split bill I want to be able to add an expense
   As a user
   in order to know how much money should be split
-  I want to be able to add an expense
+  I would like to be able to add an expense
 
   Background:
     Given the following user exists

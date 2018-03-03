@@ -1,7 +1,7 @@
 Feature: Expenses are split between all members of the group
   As a user
   in order to know how much money is owed
-  there needs to be a formula that calculates the amounts owed
+  I would like to create an algorithm that calculates the amounts owed
 
   Background:
     Given the following user exists
