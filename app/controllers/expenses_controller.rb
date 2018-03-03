@@ -27,13 +27,11 @@ class ExpensesController < ApplicationController
 
   def extract_user_expenses(group)
     total_expenses = {}
+    group.users.each do |user|
+      total_expenses[user.email] = 0
+    end
     group.expenses.each do |expense|
-      key = expense.user.email
-      if total_expenses.has_key?(key)
-        total_expenses[key] += expense.amount
-      else
-        total_expenses[key] = expense.amount
-      end
+      total_expenses[expense.user.email] += expense.amount
     end
     total_expenses
   end
@@ -53,23 +51,26 @@ class ExpensesController < ApplicationController
     end
 
     lenders.each do |lender|
-      counter = 0
-      until counter >= lenders.length
+      # counter = 0
+      # until counter >= lenders.length
+      if lender.values.first != 0
         debtors.each do |debtor|
-          binding.pry
-          if (lender.values[0] >= debtor.values[0].abs) && lender.values[0]!=0 && debtor.values[0]!=0
-            lender[lender.keys[0]] = (lender.values[0] - debtor.values[0])
-            output << "#{debtor.keys[0]} owes #{lender.keys[0]} #{-(debtor.values[0])}kr"
-            debtor[debtor.keys[0]] = (debtor.values[0] - debtor.values[0])
+          next if (lender.values.first == 0)
 
-          elsif (debtor.values[0].abs >= lender.values[0]) && debtor.values[0]!=-0.0
-            debtor[debtor.keys[0]] =  (debtor.values[0] + lender.values[0])
-            output << "#{debtor.keys[0]} owes #{lender.keys[0]} #{lender.values[0]}kr"
-            lender[lender.keys[0]] = (lender.values[0] - lender.values[0])
+          if (lender.values.first >= debtor.values.first.abs)
+            lender[lender.keys.first] = (lender.values.first + debtor.values.first)
+            output << "#{debtor.keys.first} owes #{lender.keys.first} #{-(debtor.values.first)}kr"
+            debtor[debtor.keys.first] = (debtor.values.first - debtor.values.first)
+
+          elsif (debtor.values.first.abs >= lender.values.first)
+            debtor[debtor.keys.first] =  (debtor.values.first + lender.values.first)
+            output << "#{debtor.keys.first} owes #{lender.keys.first} #{lender.values.first}kr"
+            lender[lender.keys.first] = (lender.values.first - lender.values.first)
           else
+            puts "JAjjdäää.. is stone-cold.. OMG"
           end
         end
-        counter += 1
+        # counter += 1
       end
     end
     output
