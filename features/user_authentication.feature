@@ -1,6 +1,6 @@
 Feature: User is authenticated for both sign up and login.
   As a user
-  in order to access the site
+  In order to access the site
   I would like to be able to sign up or log in
 
   Background:

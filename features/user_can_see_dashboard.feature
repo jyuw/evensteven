@@ -1,6 +1,6 @@
 Feature: User is sent to a dashboard where they can create or join a group.
   As a user
-  in order to understand what functions are available to me as a new user
+  In order to understand what functions are available to me as a new user
   I would like to see a welcome page with directions of what to do next
 
   Background:

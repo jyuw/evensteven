@@ -1,6 +1,6 @@
 Feature: User visits the site and is greeted by a landing page
   As a user
-  in order to be able to access the signup page
+  In order to be able to access the signup page
   I would like to see a landing page
 
 Scenario: User visits site

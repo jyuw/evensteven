@@ -2,9 +2,7 @@
 
 <p><%= @group.description %></p>
 
-<h3>
-  Members
-</h3>
+<h3> Members </h3>
 <% @group.users.each do |user| %>
   <p>
     <% if user == current_user %>

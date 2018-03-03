@@ -1,6 +1,6 @@
 Feature: User should be able to create a group.
   As a user
-  in order to start using the application
+  In order to start using the application
   I would like to be able to create a group with members
 
   Background:
