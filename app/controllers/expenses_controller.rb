@@ -55,7 +55,7 @@ class ExpensesController < ApplicationController
       # until counter >= lenders.length
       if lender.values.first != 0
         debtors.each do |debtor|
-          next if (lender.values.first == 0)
+          next if lender.values.first == 0 || debtor.values.first == 0
 
           if (lender.values.first >= debtor.values.first.abs)
             lender[lender.keys.first] = (lender.values.first + debtor.values.first)
