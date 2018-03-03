@@ -28,8 +28,7 @@
 <% if @output %>
   <h3> Who owes whom? </h3>
   <% @output.each do |message| %>
-    <%= message %>
+    <%= message %> <br>
   <% end %>
-  <p>
-    Total expenses per person: <%= @group_average %>kr   </p>
+  <p> Total expenses per person: <%= @group_average %>kr</p>
 <% end %>

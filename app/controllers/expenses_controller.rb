@@ -21,7 +21,7 @@ class ExpensesController < ApplicationController
   end
 
   def calculate_amounts(group)
-    @group_average = group.values.reduce(:+).fdiv(group.size)
+    @group_average = group.values.reduce(:+).fdiv(@group.users.length)
     group.map {|k, v| [k, (v - @group_average).round(2)]}.to_h
   end
 
@@ -56,12 +56,13 @@ class ExpensesController < ApplicationController
       counter = 0
       until counter >= lenders.length
         debtors.each do |debtor|
-          if (lender.values[0] >= debtor.values[0].abs) && lender.values[0]!=0
+          binding.pry
+          if (lender.values[0] >= debtor.values[0].abs) && lender.values[0]!=0 && debtor.values[0]!=0
             lender[lender.keys[0]] = (lender.values[0] - debtor.values[0])
             output << "#{debtor.keys[0]} owes #{lender.keys[0]} #{-(debtor.values[0])}kr"
             debtor[debtor.keys[0]] = (debtor.values[0] - debtor.values[0])
 
-          elsif (debtor.values[0].abs >= lender.values[0]) && debtor.values[0]!=0
+          elsif (debtor.values[0].abs >= lender.values[0]) && debtor.values[0]!=-0.0
             debtor[debtor.keys[0]] =  (debtor.values[0] + lender.values[0])
             output << "#{debtor.keys[0]} owes #{lender.keys[0]} #{lender.values[0]}kr"
             lender[lender.keys[0]] = (lender.values[0] - lender.values[0])
