@@ -8,6 +8,7 @@ end
 gem 'bootstrap', '~> 4.0.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'jquery-rails'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
