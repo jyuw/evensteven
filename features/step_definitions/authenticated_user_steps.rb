@@ -4,6 +4,10 @@ Given("the following user exists") do |table|
   end
 end
 
+Given("I try to visit the {string} page") do |page_name|
+  visit page_path(page_name)
+end
+
 When("I click on {string}") do |link_name|
   click_link_or_button link_name
 end
