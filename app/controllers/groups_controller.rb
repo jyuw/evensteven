@@ -5,7 +5,6 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.owner = current_user.email
     add_users_to_group
-    binding.pry
     redirect_to group_path(@group)
   end
 
