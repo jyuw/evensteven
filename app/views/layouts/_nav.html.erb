@@ -1,7 +1,8 @@
-<div>
-  <ul>
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
     <% if user_signed_in? %>
-      <li><%= "Hello, #{current_user.email}" %></li>
+      <li class="sidebar-brand"><%= "Hello, #{current_user.email}" %></li>
       <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
     <% else %>
       <li> <%= link_to 'Login', new_user_session_path %> </li>
@@ -13,5 +14,5 @@
             <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
           <% end %>
     <% end %>
-  </ul>
+  </ul>  
 </div>
