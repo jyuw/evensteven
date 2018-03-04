@@ -1,5 +1,10 @@
 class GroupsController < ApplicationController
 
+  def new
+    @users_list = User.all.to_a
+    @users_list.delete_at(@users_list.index(current_user))
+  end
+
   def create
     params[:users].shift
     @group = Group.new(group_params)
