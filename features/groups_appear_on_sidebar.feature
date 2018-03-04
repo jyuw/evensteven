@@ -14,7 +14,7 @@ Feature: A users groups should be diplayed in the sidebar
   Scenario: User is logged in and sees his groups
     Given I am logged in as "holger@ca.com"
     And I am on the "Dashboard" page
-    Then I should see "Hello, holger@ca.com"
+    Then I should see "Hello, holger@ca.."
     And I should see "Create a group" link
     And I should see "Holgers trip" link
     And I should see "Dashboard" link
