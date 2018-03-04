@@ -1,2 +1,13 @@
 <h1> Dashboard </h1>
 <%= link_to 'Create a group', new_group_path %>
+
+<div>
+<% current_user.groups.each do |group| %>
+  <div>
+    <h1><%= group.name %> Summary </h1>
+    <% group.output.each do |output|%>
+        <p> <%= output %> <br> </p>
+    <% end %>
+  </div>
+<% end %>
+</div>

@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
     add_users_to_group
     add_current_user_to_group
     @group.save
+    redirect_to group_path(@group)
   end
 
   def show
