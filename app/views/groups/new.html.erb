@@ -1,8 +1,13 @@
-<%= form_with url: groups_path do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, id: 'Name' %>
-  <%= f.label :description %>
-  <%= f.text_field :description, id: 'Description' %>
-  <%= f.select(:users, User.all.collect {|u| [ u.email, u.id ] }, {}, { multiple: true, id: 'friends' })%>
-  <%= f.submit value: 'Create group' %>
-<% end %>
+<h3> Create a group </h3>
+
+<div class='form-group'>
+  <%= form_with url: groups_path do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, id: 'Name', class: 'form-control', placeholder: 'Name your group' %>
+    <%= f.label :description %>
+    <%= f.text_field :description, id: 'Description', class: 'form-control', placeholder: 'Give your group a description' %>
+    <%= f.label :select %>
+    <%= f.select(:users, User.all.collect {|u| [ u.email, u.id ] }, {}, { multiple: true, id: 'friends', class: 'form-control' })%>
+    <%= f.submit value: 'Create group' , class: 'btn btn-primary' %>
+  <% end %>
+</div>

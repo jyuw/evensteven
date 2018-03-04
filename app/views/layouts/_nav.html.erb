@@ -2,13 +2,13 @@
 <div id="sidebar-wrapper">
   <ul class="sidebar-nav">
     <% if user_signed_in? %>
-      <h4><%= "Hello, #{current_user.email}" %></h4>
+      <h4><%= "Hello, #{current_user.email[0..8]}.." %></h4>
       <li><%= link_to 'Dashboard', dashboard_path %></li>
+      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
       <h4>My Groups</h4>
-      <% current_user.groups.each do |group| %>
+      <% current_user.groups.reverse.each do |group| %>
         <li><%= link_to group.name, group_path(group)%></li>
       <% end %>
-      <li style='width: 100%; position:fixed; bottom: 15px;'><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
     <% else %>
       <li>
         <%= link_to 'Login', new_user_session_path %>

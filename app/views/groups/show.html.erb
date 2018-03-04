@@ -17,11 +17,11 @@
 
 <div class='form-group'>
   <%= form_with model: [@group, Expense.new], local: true do |f| %>
-  <%= f.label :description%>
-  <%= f.text_field :description, id: 'Description', class:'form-control', style: 'max-width: 500px' %>
+  <%= f.label :description %>
+  <%= f.text_field :description, id: 'Description', class:'form-control', placeholder: 'Describe your expense' %>
 
   <%= f.label :amount %>
-  <%= f.text_field :amount, id: 'Amount', class:'form-control', style: 'max-width: 500px'  %>
+  <%= f.text_field :amount, id: 'Amount', class:'form-control', placeholder: 'How much did you spend?' %>
   <%= f.submit value: 'Add expense', class:'btn btn-primary' %>
   <% end %>
 </div>
