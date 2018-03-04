@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :expense do
-    user
-    group
-    description "MyString"
-    amount 1
+    user { User.first || association(:user)}
+    group { Group.first || association(:group)}
+    description "Travels"
+    amount 10
   end
 end

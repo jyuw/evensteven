@@ -1,8 +1,8 @@
+.DS_Store
 .idea
 /coverage
 /log
 /tmp
 !/log/.keep
 !/tmp/.keep
-
 .env

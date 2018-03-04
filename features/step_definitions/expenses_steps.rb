@@ -12,3 +12,15 @@ And("the users are members of the following group") do |table|
     user.save
   end
 end
+
+Given("the following expenses have been added") do |table|
+  table.hashes.each do |group|
+    current_group = Group.find_by(name: group[:group])
+    user = User.find_by(email: group[:email])
+    expense = create(:expense, description: group[:description], amount: group[:amount])
+    user.expenses.push expense
+    current_group.expenses.push expense
+    current_group.save
+    user.save
+  end
+end

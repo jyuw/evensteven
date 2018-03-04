@@ -27,5 +27,4 @@ class GroupsController < ApplicationController
   def add_current_user_to_group
     @group.users << current_user
   end
-
 end

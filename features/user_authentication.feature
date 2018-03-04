@@ -1,7 +1,7 @@
 Feature: User is authenticated for both sign up and login.
   As a user
   In order to access the site
-  We need to be able to sign up or log in
+  I would like to be able to sign up or log in
 
   Background:
     Given the following user exists

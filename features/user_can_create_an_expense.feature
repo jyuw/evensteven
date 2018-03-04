@@ -1,7 +1,12 @@
 Feature: In order to split bill I want to be able to add an expense
   As a user
+<<<<<<< HEAD
   in order to know how much money should be split
   I want to be able to add an expense
+=======
+  In order to know how much money should be split
+  I would like to be able to add an expense
+>>>>>>> upstream/develop
 
   Background:
     Given the following user exists
@@ -18,9 +23,13 @@ Feature: In order to split bill I want to be able to add an expense
       | faraz@ca.com | Holgers trip |
     And I am logged in as "faraz@ca.com"
 
+<<<<<<< HEAD
   Scenario:
+=======
+  Scenario: User is able to add expense
+>>>>>>> upstream/develop
     Given I am on the "Holgers trip" page
     When I fill in "Description" with "Dinner"
     And I fill in "Amount" with "300"
     And I click on "Add expense"
-    Then I should see "faraz@ca.com -> Dinner: 300kr"
+    Then I should see "faraz@ca.com paid 300kr for Dinner"
