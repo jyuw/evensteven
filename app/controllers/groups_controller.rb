@@ -11,7 +11,16 @@ class GroupsController < ApplicationController
     @group = Group.find_by(id: params[:id])
   end
 
+  def destroy
+    @group = Group.find_by(id: params[:id])
+    @group.destroy
+    flash[:success] = "#{@group.name} was successfully deleted"
+    redirect_to dashboard_path
+      #redirect_back(fallback_location: root_path)
+  end
+
   private
+
   def group_params
     params.permit(:name, :description, :users)
   end

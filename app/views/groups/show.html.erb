@@ -36,3 +36,5 @@
   <% end %>
   <p> Total expenses per person: <%= @group_average %>kr </p>
 <% end %>
+
+<%= link_to 'Delete Group', group_path(@group), method: :delete %>
