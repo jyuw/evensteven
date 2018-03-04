@@ -4,7 +4,7 @@ Given("the following group exists") do |table|
   end
 end
 
-And(/^the users are members of the following group$/) do |table|
+And("the users are members of the following group") do |table|
   table.hashes.each do |group|
     current_group = Group.find_by(name: group[:group])
     user = User.find_by(email: group[:email])
