@@ -9,6 +9,8 @@
   </head>
 
   <body>
+    <div id="wrapper" class="toggled">
+
     <%= render 'layouts/nav' %>
 
     <% flash.each do |key, value| %>
@@ -16,8 +18,25 @@
         <%= value %>
       </div>
     <% end %>
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+          <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+            <h3>Welcome!</h3>
+          <%= yield %>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
 
-    <%= yield %>
+  </div>
+
+  <!-- Menu Toggle Script -->
+  <script>
+  $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+  });
+  </script>
 
   </body>
 </html>
