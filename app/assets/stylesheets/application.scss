@@ -9,6 +9,11 @@ body {
   overflow-x: hidden;
 }
 
+.sidebar-nav h4{
+  padding-left: 20px;
+  padding-top: 40px;
+}
+
 #wrapper {
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
@@ -29,7 +34,7 @@ body {
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
-  background: #000;
+  background: #26A65B;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -58,17 +63,19 @@ body {
   margin: 0;
   padding: 0;
   list-style: none;
+  color: white;
 }
 
 .sidebar-nav li {
-  text-indent: 20px;
+  text-indent: 30px;
   line-height: 40px;
+
 }
 
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
-  color: #999999;
+  color: white;
 }
 
 .sidebar-nav li a:hover {
@@ -89,13 +96,18 @@ body {
 }
 
 .sidebar-nav > .sidebar-brand a {
-  color: #999999;
+  color: white;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
   color: #fff;
   background: none;
 }
+
+.btn {
+  margin-top: 10px;
+}
+
 @media(min-width:768px) {
   #wrapper {
     padding-left: 0;
