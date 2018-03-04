@@ -8,6 +8,6 @@
     <%= f.text_field :description, id: 'Description', class: 'form-control', placeholder: 'Give your group a description' %>
     <%= f.label :select %>
     <%= f.select(:users, User.all.collect {|u| [ u.email, u.id ] }, {}, { multiple: true, id: 'friends', class: 'form-control' })%>
-    <%= f.submit value: 'Create group' , class: 'btn btn-primary' %>
+    <%= f.submit value: 'Create group' , class: 'btn btn-success' %>
   <% end %>
 </div>
