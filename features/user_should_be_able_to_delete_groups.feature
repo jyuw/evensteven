@@ -1,4 +1,7 @@
 Feature: User should be able to delete groups
+  As a user
+  In order to keep my groups tidy
+  I would like to be able to delete unused groups
 
 
   Background:
