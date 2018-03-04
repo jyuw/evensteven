@@ -31,12 +31,12 @@
   <p><%= expense.user.email %> paid <%= expense.amount %>kr for <%= expense.description %></p>
 <% end %>
 
-<% if @output %>
+
   <h3>
     Who owes whom?
   </h3>
-  <% @output.each do |message| %>
+  <% @group.output.each do |message| %>
     <%= message %> <br>
   <% end %>
-  <p> Total expenses per person: <%= @group_average %>kr </p>
-<% end %>
+
+

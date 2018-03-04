@@ -34,9 +34,12 @@ Feature: Expenses are split between all members of the group
     When I fill in "Description" with "wine"
     And I fill in "Amount" with "300"
     And I click on "Add expense"
+    Then I am on the "Dashboard" page
+    Then I am on the "Holgers trip" page
     Then I should see "faraz@ca.com paid 600kr for Eiffel Tower"
     And I should see "david@ca.com paid 2000kr for motorcycles"
     And I should see "faraz@ca.com owes david@ca.com 500.0kr"
     And I should see "thomas@ca.com owes david@ca.com 900.0kr"
     And I should see "thomas@ca.com owes jade@ca.com 200.0kr"
     And I should see "Total expenses per person: 1100.0kr"
+
