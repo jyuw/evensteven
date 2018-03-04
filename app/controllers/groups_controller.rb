@@ -12,11 +12,15 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find_by(id: params[:id])
-    @group.destroy
-    flash[:success] = "#{@group.name} was successfully deleted"
-    redirect_to dashboard_path
-      #redirect_back(fallback_location: root_path)
+    group = Group.find_by(id: params[:id])
+    if group.owner == current_user.email
+      group.destroy
+      flash[:success] = "#{group.name} was successfully deleted"
+      redirect_to dashboard_path
+    else
+      flash[:error] = "Only #{group.owner} can delete this group"
+      redirect_to group_path(group)
+    end
   end
 
   private
