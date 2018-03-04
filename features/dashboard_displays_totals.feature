@@ -1,7 +1,7 @@
-Feature: Expenses are split between all members of the group
+Feature: User can see totals from all groups on dashboard
   As a user
-  In order to know how much money is owed
-  I would like to be able to use an algorithm that calculates the amounts owed
+  In order to easily see results from each group
+  I would like to be able see the output on the dashboard
 
   Background:
     Given the following user exists
@@ -20,7 +20,6 @@ Feature: Expenses are split between all members of the group
       | faraz@ca.com | Holgers trip |
       | david@ca.com | Holgers trip |
       | thomas@ca.com | Holgers trip |
-
     And the following expenses have been added
       | email        | description  | amount | group        |
       | david@ca.com | motorcycles  | 2000   | Holgers trip |
@@ -29,17 +28,13 @@ Feature: Expenses are split between all members of the group
       | jade@ca.com  | cheese       | 1000   | Holgers trip |
     And I am logged in as "jade@ca.com"
 
-  Scenario: User adds an expense and it is split
+  Scenario: User is on dashboard and can see results from every group
     Given I am on the "Holgers trip" page
     When I fill in "Description" with "wine"
     And I fill in "Amount" with "300"
     And I click on "Add expense"
     Then I am on the "Dashboard" page
-    Then I am on the "Holgers trip" page
-    Then I should see "faraz@ca.com paid 600kr for Eiffel Tower"
-    And I should see "david@ca.com paid 2000kr for motorcycles"
+    And I should see "Holgers trip Summary"
     And I should see "faraz@ca.com owes david@ca.com 500.0kr"
     And I should see "thomas@ca.com owes david@ca.com 900.0kr"
     And I should see "thomas@ca.com owes jade@ca.com 200.0kr"
-    And I should see "Total expenses per person: 1100.0kr"
-

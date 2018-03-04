@@ -11,10 +11,10 @@ RSpec.describe Group, type: :model do
     it {is_expected.to have_db_column :id}
     it {is_expected.to have_db_column :name}
     it {is_expected.to have_db_column :description}
+    it {is_expected.to have_db_column :output}
   end
 
   describe 'Associations' do
     it {is_expected.to have_and_belong_to_many :users}
-    it {is_expected.to have_many :expenses}
   end
 end

@@ -1,6 +1,6 @@
-<h1><%= @group.name %></h1>
+<h1> <%= @group.name %> </h1>
 
-<p><%= @group.description %></p>
+<p> <%= @group.description %> </p>
 
 <h3> Members </h3>
 <% @group.users.each do |user| %>
@@ -30,12 +30,9 @@
   <p><%= expense.user.email %> paid <%= expense.amount %>kr for <%= expense.description %></p>
 <% end %>
 
-<% if @output %>
-  <h3>
-    Who owes whom?
-  </h3>
-  <% @output.each do |message| %>
-    <%= message %> <br>
-  <% end %>
-  <p> Total expenses per person: <%= @group_average %>kr </p>
+<h3>
+  Who owes whom?
+</h3>
+<% @group.output.each do |message| %>
+  <%= message %> <br>
 <% end %>
