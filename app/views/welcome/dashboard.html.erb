@@ -4,6 +4,7 @@
 <div>
 <% current_user.groups.each do |group| %>
   <div>
+    <br>
     <h1><%= group.name %> Summary </h1>
     <% group.output.each do |output|%>
         <p> <%= output %> <br> </p>

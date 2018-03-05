@@ -25,16 +25,15 @@
   <%= f.submit value: 'Add expense', class:'btn btn-success' %>
   <% end %>
 </div>
-
+<br>
+<h3>Expense History</h3>
 <% @group.expenses.each do |expense| %>
   <p><%= expense.user.email %> paid <%= expense.amount %>kr for <%= expense.description %></p>
 <% end %>
-
-<h3>
-  Who owes whom?
-</h3>
+<br>
+<h3> Who owes whom?</h3>
 <% @group.output.each do |message| %>
   <%= message %> <br>
 <% end %>
-
+<br>
 <%= link_to 'Delete Group', group_path(@group), method: :delete, class: 'btn btn-danger' %>
