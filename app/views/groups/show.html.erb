@@ -36,3 +36,5 @@
 <% @group.output.each do |message| %>
   <%= message %> <br>
 <% end %>
+
+<%= link_to 'Delete Group', group_path(@group), method: :delete %>

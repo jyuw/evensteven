@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   authenticate :user do
     get :dashboard, controller: :welcome, action: :dashboard
-    resources :groups, only: [:new, :create, :show] do
+    resources :groups, only: [:new, :create, :show, :destroy] do
       resources :expenses, only: [:create]
     end
   end
