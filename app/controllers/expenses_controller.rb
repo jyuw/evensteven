@@ -43,7 +43,7 @@ class ExpensesController < ApplicationController
   def split(all_group_expenses, total_amounts_owed)
     lenders = []
     debtors = []
-    output = ["Total expenses per person: #{@group_average}kr"]
+    output = ["Total expenses per person: #{@group_average.to_i}kr"]
 
     all_group_expenses.each do |email, amount|
       next if total_amounts_owed[email] == 0
@@ -63,15 +63,14 @@ class ExpensesController < ApplicationController
           lender_email = lender.keys.first
 
           next if lender_owed == 0 || debtor_owes == 0
-
           if (lender_owed >= debtor_owes.abs)
             lender[lender_email] = (lender_owed + debtor_owes)
-            output << "#{debtor_email} owes #{lender_email} #{-(debtor_owes)}kr"
+            output << "#{debtor_email} owes #{lender_email} #{-(debtor_owes.to_i)}kr"
             debtor[debtor_email] = (debtor_owes - debtor_owes)
 
           else
             debtor[debtor_email] =  (debtor_owes + lender_owed)
-            output << "#{debtor_email} owes #{lender_email} #{lender_owed}kr"
+            output << "#{debtor_email} owes #{lender_email} #{lender_owed.to_i}kr"
             lender[lender_email] = (lender_owed - lender_owed)
           end
         end
