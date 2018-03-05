@@ -1,3 +1,4 @@
+
 <h3> Create a group </h3>
 
 <div class='form-group'>
@@ -5,8 +6,9 @@
     <%= f.label :name %>
     <%= f.text_field :name, id: 'Name', class: 'form-control', placeholder: 'Name your group' %>
     <%= f.label :description %>
-    <%= f.text_field :description, id: 'Description', class: 'form-control', placeholder: 'Name your group' %>
-    <%= f.select(:users, @users_list.collect {|u| [u.email, u.id]}, {}, {multiple: true, id: 'friends'}) %>
-    <%= f.submit value: 'Create group', class: 'btn btn-success' %>
+    <%= f.text_field :description, id: 'Description', class: 'form-control', placeholder: 'Give your group a description' %>
+    <%= f.label :select %>
+    <%= f.select(:users, @users_list.collect {|u| [ u.email, u.id ] }, {}, { multiple: true, id: 'friends', class: 'form-control' })%>
+    <%= f.submit value: 'Create group' , class: 'btn btn-success' %>
   <% end %>
 </div>
