@@ -42,4 +42,3 @@ Feature: Expenses are split between all members of the group
     And I should see "thomas@ca.com owes david@ca.com 900.0kr"
     And I should see "thomas@ca.com owes jade@ca.com 200.0kr"
     And I should see "Total expenses per person: 1100.0kr"
-
