@@ -5,4 +5,3 @@
 /tmp
 !/log/.keep
 !/tmp/.keep
-.env
